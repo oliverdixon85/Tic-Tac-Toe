@@ -1,0 +1,41 @@
+.board {
+    padding: 3em;
+}
+
+h1 {
+    text-align: center
+}
+
+.row>div {
+    float: left;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+
+}
+
+.row {
+    clear: both;
+    width: 302px;
+    margin: 0 auto;
+
+}
+
+.top {
+    border-bottom: 1px black solid;
+}
+
+.bottom {
+    border-top: 1px black solid;
+}
+
+.left {
+    border-right: 1px black solid;
+}
+
+.right {
+    border-left: 1px black solid;
+}
+.currentPlayer {
+    text-align: center
+}
