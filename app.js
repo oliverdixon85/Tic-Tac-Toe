@@ -53,19 +53,26 @@ function checkForWinner() {
         banner.textContent = 'Winner!'
         gameOver = true 
      } else if (checkMiddleX() || checkMiddleO()){
-        console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
      } else if (checkBottomX() || checkBottomO()){
-        console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
      } else if (checkRightX() || checkRightO()){
-        console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
      } else if (checkCenterX() || checkCenterO()){
-         console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
      } else if (checkLeftX() || checkLeftO()){
-        console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
      } else if (checkDiagLeftX() || checkDiagLeftO()){
-        console.log('Winner!')
-     } else if (checkDiagRightX() || checkDiagLeftO()){
-        console.log('Winner!')
+        banner.textContent = 'Winner!'
+        gameOver = true
+     } else if (checkDiagRightX() || checkDiagRightO()){
+        banner.textContent = 'Winner!'
+        gameOver = true
      } 
 }
 
