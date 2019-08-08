@@ -11,6 +11,9 @@ h1 {
     width: 100px;
     height: 100px;
     cursor: pointer;
+    text-align: center;
+    line-height: 100px;
+    font-size: 50px;
 
 }
 
@@ -39,3 +42,5 @@ h1 {
 .currentPlayer {
     text-align: center
 }
+
+#banner {text-align: center}

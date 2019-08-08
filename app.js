@@ -1,11 +1,24 @@
 let cells = document.querySelectorAll('.row>div');
+let banner = document.querySelector('#banner');
 let currentPlayer = 'X';
+let moveCount = 0;
+let gameOver = false
 
 for (let i = 0; i < cells.length; i++) {
     cells[i].addEventListener('click', cellClicked);
 }
 
 function cellClicked(e) {
+
+    if (gameOver === true){
+        for (let i = 0; i < cells.length; i++){
+            cells[i].textContent=''
+        }
+        banner.textContent = ''
+        gameOver = false
+        moveCount = 0
+        return
+    }
 
     if (e.target.textContent === 'X' || e.target.textContent === 'O') {
         return
@@ -15,9 +28,17 @@ function cellClicked(e) {
 
     checkForWinner();
 
+    moveCount++
+    if (moveCount === 9){
+        banner.textContent = 'Draw!'
+        gameOver = true;
+    }
+
     togglePlayer();
 
 }
+
+
 
 function togglePlayer() {
     if (currentPlayer === 'X') {
@@ -28,26 +49,27 @@ function togglePlayer() {
 }
 
 function checkForWinner() {
-    if (checkTop()) {
+    if (checkTopX() || checkTopO()) {
+        banner.textContent = 'Winner!'
+        gameOver = true 
+     } else if (checkMiddleX() || checkMiddleO()){
         console.log('Winner!')
-    } else if (checkMiddle()){
+     } else if (checkBottomX() || checkBottomO()){
         console.log('Winner!')
-    } else if (checkBottom()){
+     } else if (checkRightX() || checkRightO()){
         console.log('Winner!')
-    } else if (checkRight()){
+     } else if (checkCenterX() || checkCenterO()){
+         console.log('Winner!')
+     } else if (checkLeftX() || checkLeftO()){
         console.log('Winner!')
-    } else if (checkCenter()){
+     } else if (checkDiagLeftX() || checkDiagLeftO()){
         console.log('Winner!')
-    } else if (checkLeft()){
+     } else if (checkDiagRightX() || checkDiagLeftO()){
         console.log('Winner!')
-    } else if (checkDiagLeft()){
-        console.log('Winner!')
-    } else if (checkDiagRight()){
-        console.log('Winner!')
-    }
+     } 
 }
 
-function checkTop() {
+function checkTopX() {
     if (cells[0].textContent === 'X' && cells[1].textContent === 'X' && cells[2].textContent === 'X') {
         return true;
     } else {
@@ -56,105 +78,105 @@ function checkTop() {
 
 }
 
-function checkTop() {
+function checkTopO() {
     if (cells[0].textContent === 'O' && cells[1].textContent === 'O' && cells[2].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkMiddle() {
+function checkMiddleO() {
     if (cells[3].textContent === 'O' && cells[4].textContent === 'O' && cells[5].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkMiddle() {
+function checkMiddleX() {
     if (cells[3].textContent === 'X' && cells[4].textContent === 'X' && cells[5].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkBottom() {
+function checkBottomO() {
     if (cells[6].textContent === 'O' && cells[7].textContent === 'O' && cells[8].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkBottom() {
+function checkBottomX() {
     if (cells[6].textContent === 'X' && cells[7].textContent === 'X' && cells[8].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkRight() {
+function checkRightO() {
     if (cells[2].textContent === 'O' && cells[5].textContent === 'O' && cells[8].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkRight() {
+function checkRightX() {
     if (cells[2].textContent === 'X' && cells[5].textContent === 'X' && cells[8].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkCenter() {
+function checkCenterX() {
     if (cells[1].textContent === 'X' && cells[4].textContent === 'X' && cells[7].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkCenter() {
+function checkCenterO() {
     if (cells[1].textContent === 'O' && cells[4].textContent === 'O' && cells[7].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkLeft() {
+function checkLeftX() {
     if (cells[0].textContent === 'X' && cells[3].textContent === 'X' && cells[6].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkLeft() {
+function checkLeftO() {
     if (cells[0].textContent === 'O' && cells[3].textContent === 'O' && cells[6].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkDiagLeft() {
+function checkDiagLeftX() {
     if (cells[0].textContent === 'X' && cells[4].textContent === 'X' && cells[8].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkDiagLeft() {
+function checkDiagLeftO() {
     if (cells[0].textContent === 'O' && cells[4].textContent === 'O' && cells[8].textContent === 'O') {
         return true;
     } else {
         return false;
     }
 }
-function checkDiagRight() {
+function checkDiagRightX() {
     if (cells[2].textContent === 'X' && cells[4].textContent === 'X' && cells[6].textContent === 'X') {
         return true;
     } else {
         return false;
     }
 }
-function checkDiagRight() {
+function checkDiagRightO() {
     if (cells[2].textContent === 'O' && cells[4].textContent === 'O' && cells[6].textContent === 'O') {
         return true;
     } else {
